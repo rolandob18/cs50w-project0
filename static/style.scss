@@ -1,0 +1,354 @@
+%pagina1_titulo {
+    background-color: #a50404;
+    color: #fff;
+}
+
+%pagina2_titulo {
+    background-color: #b90909;
+    color: #fff;
+}
+
+%pagina3_titulo {
+    background-color: #940000;
+    color: #fff;
+}
+
+%pagina4_titulo {
+    background-color: #4d4d4d;
+    color: #ff0000;
+}
+
+%titulos {
+ margin-bottom : 2rem;
+ padding: 2rem 1rem;
+ text-align: center;
+}
+
+%contenidos { 
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#titulo1{
+    @extend %pagina1_titulo;
+    @extend %titulos;
+}
+
+.contenido1, .contenido1_1{
+    background-color: #a50404;
+    color: #fff;
+    @extend %contenidos;
+}
+
+#titulo2{
+    @extend %pagina2_titulo;
+    @extend %titulos;
+}
+
+.contenido2, .contenido2_2{
+    background-color: #033b57;
+    color: #fff;
+    @extend %contenidos;
+}
+
+#titulo3{
+    @extend %pagina3_titulo;
+    @extend %titulos;
+}
+
+.contenido3, .contenido3_3{
+    background-color: #692401;
+    color: #fff;
+    @extend %contenidos;
+}
+
+#titulo4{
+    @extend %pagina4_titulo;
+    @extend %titulos;
+}
+
+.contenido4, .contenido4_4{
+    background-color: #161515;
+    color: #fff;
+    @extend %contenidos
+}
+
+.seccion{
+    padding: 0.5rem 2rem 1rem 2rem;
+}
+
+.seccion1 , .seccion2, .seccion3, .seccion4{
+    padding: 1.5rem 2rem 1rem 2rem;
+}
+
+div{
+    h1, p{
+        text-align: center;
+    }
+}
+
+.seccion p > a:hover{
+    background-color:#1100fc;
+}
+
+table{
+    border: 10px solid;
+}
+th, td{
+    text-align: center;
+    border: #09b8be 2px solid;
+}
+
+ul {
+    list-style: none;
+    padding: 20px;
+    margin-left: 10px;
+}
+    
+ul li::before {
+    content: "\2022";  
+    color: red; 
+    display: inline-block; 
+    padding-right: 10px;
+    font-size: 50px;
+    line-height: 25px;
+    vertical-align: -11px;
+    width: 20px;
+}
+li:hover{
+    background-color: #010757;
+}
+
+$breakpoints: (
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl:  1200px,
+    xxl: 1400px 
+);
+
+@mixin respond-below($breakpoint) {
+
+    @if map-has-key($breakpoints, $breakpoint) {
+  
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+  
+    @media (max-width: ($breakpoint-value - 1)) {
+    @content;
+    }
+    
+    } @else {
+  
+      @warn 'Breakpoint Invalido: #{$breakpoint}.';
+    }
+  }
+  
+@include respond-below(sm){
+   
+    #titulo1, .contenido1, .contenido1_1{
+    background-color: #000000;
+    text-align: center;
+    }
+    
+    #titulo2{
+        background-color: #7c0404;
+    }
+    .contenido2, .contenido2_2{
+        background-color: #060044;
+        text-align: center;
+    }
+
+    #titulo3{
+        background-color: #110000;
+    }
+    .contenido3, .contenido3_3{
+        background-color: #7c0404;
+        text-align: center;
+    }
+
+    #titulo4{
+        background-color: #0f0707;
+    }
+    .contenido4, .contenido4_4{
+        background-color: #7c0501;
+        text-align: center;
+    }
+
+    p img{
+        border-radius: 10rem;
+    }
+
+    th, td{
+        color: #cde6f5;
+        border:#09b8be 5px solid;
+    }
+
+    ul li::before{
+        content: "\2022";
+        color: #fff;
+    }
+}
+
+@mixin respond-between($lower, $upper) {
+
+    @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+  
+    $lower-breakpoint: map-get($breakpoints, $lower);
+    $upper-breakpoint: map-get($breakpoints, $upper);
+  
+    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+    @content;
+    }
+    
+    } @else {
+
+      @if (map-has-key($breakpoints, $lower) == false) {
+  
+        @warn 'Tu lower breakpoint es invalido: #{$lower}.';
+      }
+  
+      @if (map-has-key($breakpoints, $upper) == false) {
+  
+        @warn 'Tu upper breakpoint es invalido: #{$upper}.';
+      }
+    }
+  }
+
+  @include respond-between(sm, md) {
+    
+    #titulo1 , .contenido1, .contenido1_1{
+    background-color: #2e2c2c;
+    text-align: center;
+    }
+
+    #titulo2{
+        background-color: #020000;
+    }
+    .contenido2, .contenido2_2{
+        background-color: #120b52;
+        text-align: center;
+    }
+
+    #titulo3 {
+        background-color: #4e1900;
+    }
+      .contenido3, .contenido3_3 {
+        background-color: #050008;
+        text-align: center;
+    }
+
+    #titulo4 {
+        background-color:#c4c0c0;
+    }
+    .contenido4, .contenido4_4 {
+        background-color: #7e0000;
+        text-align: center;
+    }
+
+    p img{
+        border-radius: 10rem;
+    }
+
+    th,td{
+        color: #cde6f5;
+        border: #ff0000 5px solid;
+    }
+
+    ul li::before{
+        content: "\2022";
+        color: #fff;
+    }
+  }
+
+  @include respond-between(md, lg){
+
+    #titulo1 , .contenido1, .contenido1_1{
+    background-color: #770505;
+    text-align: center;
+    }
+    
+    #titulo2{
+        background-color: #d40000;
+    }
+    .contenido2, .contenido2_2{
+        background-color: #050130;
+        text-align: center;
+    }
+
+    #titulo3 {
+        background-color: #4e1900;
+    }
+      .contenido3, .contenido3_3 {
+        background-color: #ad0606;
+        text-align: center;
+    }
+
+    #titulo4 {
+        background-color:#0f0f0f;
+    }
+    .contenido4, .contenido4_4 {
+        background-color: #6b4949;
+        text-align: center;
+    }
+
+    p img{
+        border-radius: 10rem;
+    }
+
+    th,td{
+        color: #cde6f5;
+        border: #05a5aa 5px solid;
+    }
+
+    ul li::before{
+        content: "\2022";
+        color: #fff;
+    }
+  }
+
+  @include respond-between(lg, xl){
+    #titulo1 , .contenido1, .contenido1_1{
+        background-color: #3d0707;
+        text-align: center;
+        }
+
+    #titulo2{
+        background-color: #062564;
+    }
+    .contenido2, .contenido2_2{
+        background-color: #9b0505;
+        text-align: center;
+    }
+
+    #titulo3 {
+        background-color: #290101;
+    }
+      .contenido3, .contenido3_3 {
+        background-color: #0d0d0e;
+        text-align: center;
+    }
+    
+    #titulo4 {
+        background-color:#030303;
+    }
+    .contenido4, .contenido4_4 {
+        background-color: #6e0000;
+        text-align: center;
+    }
+
+     p img{
+        border-radius: 10rem;
+    }
+
+    th,td{
+        color: #cde6f5;
+        border: #cfcfcf 5px solid;
+    }
+
+    ul li::before{
+        content: "\2022";
+        color: #fff;
+    }
+  }
