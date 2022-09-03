@@ -141,7 +141,7 @@ $breakpoints: (
     
     } @else {
   
-      @warn 'Breakpoint Invalido: #{$breakpoint}.';
+      @warn 'Invalid breakpoint: #{$breakpoint}.';
     }
   }
   
@@ -189,6 +189,10 @@ $breakpoints: (
         content: "\2022";
         color: #fff;
     }
+
+    div:hover{
+        background-color:#08025a;
+    }
 }
 
 @mixin respond-between($lower, $upper) {
@@ -206,12 +210,12 @@ $breakpoints: (
 
       @if (map-has-key($breakpoints, $lower) == false) {
   
-        @warn 'Tu lower breakpoint es invalido: #{$lower}.';
+        @warn 'Your lower breakpoint was invalid: #{$lower}.';
       }
   
       @if (map-has-key($breakpoints, $upper) == false) {
   
-        @warn 'Tu upper breakpoint es invalido: #{$upper}.';
+        @warn 'Your upper breakpoint was invalid: #{$upper}.';
       }
     }
   }
@@ -260,6 +264,10 @@ $breakpoints: (
         content: "\2022";
         color: #fff;
     }
+
+    div:hover{
+        background-color:#08025a;
+    }
   }
 
   @include respond-between(md, lg){
@@ -306,6 +314,9 @@ $breakpoints: (
         content: "\2022";
         color: #fff;
     }
+    div:hover{
+        background-color:#08025a;
+    }
   }
 
   @include respond-between(lg, xl){
@@ -351,4 +362,9 @@ $breakpoints: (
         content: "\2022";
         color: #fff;
     }
+
+    div:hover{
+        background-color:#08025a;
+    }
+
   }
